@@ -32,10 +32,11 @@ $(function() {
          * and that the URL is not empty.
          */
          it('name is defined', function() {
-            for (var i in allFeeds){
-                expect(allFeeds[i].name).toBeDefined();
-                expect((allFeeds[i].name).length).not.toBe(0);
-            }
+            allFeeds.forEach( function(feed) {
+                expect(feed.name).toBeDefined();
+                expect((feed.name).length).not.toBe(0);
+            });
+
         });
 
 
@@ -44,10 +45,10 @@ $(function() {
          * and that the name is not empty.
          */
          it('url is not empty', function() {
-            for (var i in allFeeds){
-                expect(allFeeds[i].url).toBeDefined();
-                expect((allFeeds[i].url).length).not.toBe(0);
-            }
+            allFeeds.forEach( function(feed){
+                expect(feed.url).toBeDefined();
+                expect((feed.url).length).not.toBe(0);
+            });
 
         });
 
@@ -102,9 +103,8 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         it('feeds are loaded properly', function(done) {
+         it('feeds are loaded properly', function() {
             expect($('.feed .entry').length).not.toBe(0);
-            done();
          })
          
     });
@@ -128,9 +128,8 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-         it('content is changed properly', function(done) {
+         it('content is changed properly', function() {
             expect(feedOne).not.toEqual(feedTwo);
-            done();
          })
 
     });
